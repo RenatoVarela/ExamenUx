@@ -11,7 +11,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 function Note(props) {
   const { item, row } = props;
-  const { id, titulo, category, Etiqueta } = item;
+  const { id, title, category, etiquetas} = item;
   const [checkbox, setCheckbox] = React.useState(false);
   const classes = useStyles();
   const [, dispatch] = useStateValue();
@@ -55,7 +55,7 @@ function Note(props) {
   return (
     <Paper className={classes.paper}>
       <Grid container>
-        <div className={titulo}>
+        <div className={title}>
           <Checkbox
             checked={checkbox}
             onChange={handleChangeCheckBox}
@@ -64,7 +64,7 @@ function Note(props) {
               "aria-label": "primary checkbox"
             }}
           />
-          {row + 1}- {titulo}({category})({Etiqueta})
+          {row + 1}- {title} ({category})({etiquetas})
         </div>
       </Grid>
       <Divider variant="middle" />

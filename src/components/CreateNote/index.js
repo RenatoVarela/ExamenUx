@@ -31,10 +31,9 @@ function CreateNote() {
   const [state, setState] = React.useState({
     id: 0,
     category: "",
-    notebook: "",
+    //notebook: "",
     message: "",
-    title: "",
-    etiquetas: ""
+    title: ""
   });
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
@@ -173,25 +172,8 @@ function CreateNote() {
       </FormControl>
 
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel ref={inputLabel} htmlFor="outlined-notebook-native-simple">
-          Note Book
-        </InputLabel>
-        <Select
-          native
-          value={state.notebook}
-          onChange={e => handleChange("notebook", e)}
-          labelWidth={labelWidth}
-          inputProps={{
-            name: "notebook",
-            id: "outlined-notebook-native-simple"
-          }}
-        >
-          <option value="" />
-          <option value={"Next Month"}>Next Month</option>
-          <option value={"University"}>University</option>
-          <option value={"Home"}>Home</option>
-          <option value={"Agregar Nota"}>Agregar Nota</option>
-        </Select>
+        
+      
 
         <div>
       <h1>Seleccionar etiqueta</h1>

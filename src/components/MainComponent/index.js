@@ -1,6 +1,6 @@
 import React from "react";
 import NotesList from "../NotesList";
-import NoteBooks from "../NoteBooks";
+
 import CreateNote from "../CreateNote";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -21,7 +21,7 @@ function MainComponent() {
               <ModalBase />
               <ShowModal />
               <Grid item xs={2}>
-                <NoteBooks />
+               
               </Grid>
               <Grid item xs={5}>
                 <NotesList />

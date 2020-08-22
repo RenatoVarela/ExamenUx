@@ -9,16 +9,16 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { useListStyles as useStyles } from "./styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+//import InputLabel from "@material-ui/core/InputLabel";
+//import FormControl from "@material-ui/core/FormControl";
+//import Select from "@material-ui/core/Select";
 
 function NotesList() {
   const classes = useStyles();
   const [{ notes }, dispatch] = useStateValue();
   const [mainData, setMainData] = useState([]);
   const [state, setState] = useState("");
-  const [notebookDropDown, setNotebookDropDown] = useState("");
+ 
   const [stateCategory, setStateCategory] = useState("");
   const [checkboxes, setCheckboxes] = useState([]);
 
@@ -84,62 +84,7 @@ function NotesList() {
     }
   }
 
-  /**
-   * Handle Move notes to another notebook
-   **/
-  function handleMoveNotes(e) {
-    const NoteBookName = e.target.value;
-
-    //step 1- remove Notes from current NoteBook
-    checkboxes.map(item => {
-      //push items before remove and create a clone
-      const Note = LocalStorage.findId(item)[0];
-      const NoteBookOfTheNote = Note.notebook;
-      const getObjectsOfTheNoteBook = JSON.parse(
-        LocalStorage.getNotebooks(
-          NoteBookOfTheNote === "" ? "notes" : NoteBookOfTheNote
-        )
-      );
-
-      let removeNote = getObjectsOfTheNoteBook.filter(
-        note => note.id !== Note.id
-      );
-      LocalStorage.rmNoteBook(
-        NoteBookOfTheNote === "" ? "notes" : NoteBookOfTheNote
-      );
-      LocalStorage.set(
-        NoteBookOfTheNote === "" ? "notes" : NoteBookOfTheNote,
-        JSON.stringify(removeNote)
-      );
-
-      //step 2- move to new NoteBook
-      let allNodesObject = [];
-      const allNodes = LocalStorage.getNotebooks(NoteBookName);
-      allNodesObject = allNodes !== null ? JSON.parse(allNodes) : [];
-      Note.notebook = NoteBookName;
-      //if Notebook is empty , we have to initial firs object
-      if (allNodesObject.length === 0) {
-        allNodesObject = [Note];
-      } else {
-        //so push into it
-        allNodesObject.push(Note);
-      }
-
-      LocalStorage.set(NoteBookName, JSON.stringify(allNodesObject));
-
-      //step 3- res dispatch current NoteBook witn nre Note list and disable Move
-      setCheckboxes([]);
-      setNotebookDropDown("");
-      dispatch({
-        type: "newNote",
-        notes: allNodesObject
-      });
-
-      //  Notes.push(Note);
-      return true;
-    });
-  }
-
+ 
   React.useEffect(() => {
     setMainData(notes);
   }, [notes]);
@@ -194,28 +139,7 @@ function NotesList() {
         }}
       />
 
-      <FormControl fullWidth variant="outlined" className={classes.formControl}>
-        <InputLabel htmlFor="outlined-Notebook-native-simple">
-          Move to
-        </InputLabel>
-        <Select
-          classes={{ disabled: classes.moveToSelect }}
-          disabled={checkboxes.length === 0}
-          native
-          onChange={handleMoveNotes}
-          value={notebookDropDown}
-          labelWidth={60}
-          inputProps={{
-            name: "Notebook",
-            id: "outlined-Notebook-native-simple"
-          }}
-        >
-          <option value="" />
-          <option value={"Next Month"}>Next Month</option>
-          <option value={"University"}>University</option>
-          <option value={"Home"}>Home</option>
-        </Select>
-      </FormControl>
+     
 
       <ButtonGroup
         fullWidth
