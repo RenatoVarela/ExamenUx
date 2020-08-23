@@ -1,13 +1,13 @@
-ejecutar los comandos en el siguiente orden
---- npm run build
---- npm install
---- npm run start
+ejecutar los comandos en el siguiente orden\
+--- npm run build\
+--- npm install\
+--- npm run start\
 
 
-para ejecutar en electron:
-----npm run start 
-##En una segunda terminal
---- npm run electron
+para ejecutar en electron:\
+----npm run start \
+##En una segunda terminal\
+--- npm run electron\
 
 --acerca de los commits
 
