@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/ExamenUx/static/css/main.4bb5f792.chunk.css",
+    "main.js": "/ExamenUx/static/js/main.25019860.chunk.js",
+    "main.js.map": "/ExamenUx/static/js/main.25019860.chunk.js.map",
+    "runtime-main.js": "/ExamenUx/static/js/runtime-main.1f7a6a1e.js",
+    "runtime-main.js.map": "/ExamenUx/static/js/runtime-main.1f7a6a1e.js.map",
+    "static/js/2.b0346982.chunk.js": "/ExamenUx/static/js/2.b0346982.chunk.js",
+    "static/js/2.b0346982.chunk.js.map": "/ExamenUx/static/js/2.b0346982.chunk.js.map",
+    "index.html": "/ExamenUx/index.html",
+    "precache-manifest.41f962152c3d88128801802471388aae.js": "/ExamenUx/precache-manifest.41f962152c3d88128801802471388aae.js",
+    "service-worker.js": "/ExamenUx/service-worker.js",
+    "static/css/main.4bb5f792.chunk.css.map": "/ExamenUx/static/css/main.4bb5f792.chunk.css.map",
+    "static/js/2.b0346982.chunk.js.LICENSE.txt": "/ExamenUx/static/js/2.b0346982.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/ExamenUx/static/media/wallpaperflare.com_wallpaper.c55e5bcd.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1f7a6a1e.js",
+    "static/js/2.b0346982.chunk.js",
+    "static/css/main.4bb5f792.chunk.css",
+    "static/js/main.25019860.chunk.js"
+  ]
+}
