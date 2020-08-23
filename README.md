@@ -1,3 +1,5 @@
+ejecutar los comandos en el siguiente orden
+--- npm run build
 --- npm install
 --- npm run start
 
