@@ -43,8 +43,7 @@ export default function ModalBase() {
   const [state, setState] = React.useState({
     category: "",
     message: "",
-    title: "",
-    Etiquetas: ""
+    title: ""
   });
 
   const handleClose = () => {
@@ -90,13 +89,14 @@ export default function ModalBase() {
 
   React.useEffect(() => {
     return () => {
-      setState({ category: "", message: "", title: "", Etiquetas: "" });
+      setState({ category: "", message: "", title: "" });
     };
   }, []);
 
   return (
     <React.Fragment>
       <Dialog
+        label
         open={modal}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
@@ -107,7 +107,7 @@ export default function ModalBase() {
             value={state !== undefined && state.title}
             id="outlined-textarea"
             label="Title"
-            placeholder="Hola mucho gusto"
+            placeholder="Write your title"
             className={classes.textField}
             margin="normal"
             variant="outlined"
@@ -116,7 +116,7 @@ export default function ModalBase() {
           />
           <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel ref={inputLabel} htmlFor="outlined-age-native-simple">
-              Category
+              Categoriasdsada
             </InputLabel>
             <Select
               native

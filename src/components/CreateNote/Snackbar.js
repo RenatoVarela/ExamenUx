@@ -4,9 +4,6 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import { snackBarStyle as useStyles } from "./styles";
 
-// Material Select Initialization
-
-
 export default function CustomSnackbar(props) {
   const classes = useStyles();
   const { setClose, open: openSnack } = props;
@@ -53,7 +50,5 @@ export default function CustomSnackbar(props) {
         ]}
       />
     </div>
-
-    
   );
 }

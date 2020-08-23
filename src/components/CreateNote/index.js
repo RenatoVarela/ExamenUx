@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -9,36 +9,30 @@ import LocalStorage from "../../Utils/localStorage";
 import { useStateValue } from "../../statemanagement";
 import { useStyles } from "./styles";
 import CustomSnackbar from "./Snackbar";
-import MultiSelect from "react-multi-select-component";
+//import Chip from '@material-ui/core/Chip';
 
+/*const names = [
+  'Framework',
+  'BackEnd',
+  'FrontEnd',
+  'Experiencia',
+  'Programacion',
+  'Javascript'
+];*/
 
-
-const etiquetas = [ {
-  value: 'FrameWork', label: 'FrameWork' },
-  { value: 'React', label: 'React' },
-  { value: 'BackEnd', label: 'Back-End' },
-  { value: 'javascript', label: 'javascript' },
-  { value: 'FrontEnd', label: 'rontEnd' }];
-  
-
-  
-
-//const etiquetaSize = [];
 
 function CreateNote() {
-  const [selected, setSelected] = useState([]);
   const classes = useStyles();
   const [state, setState] = React.useState({
     id: 0,
     category: "",
-    //notebook: "",
+    notebook: "",
     message: "",
     title: ""
   });
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
-  
   const [, dispatch] = useStateValue();
 
   React.useEffect(() => {
@@ -108,24 +102,20 @@ function CreateNote() {
    **/
   React.useEffect(() => {
     let All;
-    let NoteNextMonth = LocalStorage.getNotebooks("Next Month");
-    let University = LocalStorage.getNotebooks("University");
-    let Home = LocalStorage.getNotebooks("Home");
+    let Lenguajes = LocalStorage.getNotebooks("Lenguajes Prog.");
+    let Experiencia = LocalStorage.getNotebooks("Experiencia Usuario");
+    let Diseno = LocalStorage.getNotebooks("Diseno S.Logicos");
     let Notes = LocalStorage.getNotebooks("notes");
-    let Etiqueta = LocalStorage.getNotebooks("Etiqueta");
-    
 
-    NoteNextMonth = NoteNextMonth !== null ? JSON.parse(NoteNextMonth) : [];
-    University = University !== null ? JSON.parse(University) : [];
-    Home = Home !== null ? JSON.parse(Home) : [];
+    Lenguajes = Lenguajes !== null ? JSON.parse(Lenguajes) : [];
+    Experiencia = Experiencia !== null ? JSON.parse(Experiencia) : [];
+    Diseno = Diseno !== null ? JSON.parse(Diseno) : [];
     Notes = Notes !== null ? JSON.parse(Notes) : [];
-    Etiqueta = Etiqueta !== null ? JSON.parse(Etiqueta) : [];
-    All = [...NoteNextMonth, ...University, ...Home, ...Notes, ...Etiqueta];
+    All = [...Lenguajes, ...Experiencia, ...Diseno, ...Notes];
     if (All.length > 0) {
       dispatch({ type: "newNote", notes: All });
     }
   }, [dispatch]);
-  
 
   return (
     <React.Fragment>
@@ -138,76 +128,10 @@ function CreateNote() {
       >
         Add a new Note
       </Typography>
-
       <TextField
         id="outlined-textarea"
-        label="Title"
-        placeholder="Write your title"
-        className={classes.textField}
-        margin="normal"
-        variant="outlined"
-        fullWidth
-        onChange={e => handleChange("title", e)}
-      />
-
-      <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel ref={inputLabel} htmlFor="outlined-category-native-simple">
-          Category
-        </InputLabel>
-        <Select
-          native
-          value={state.category}
-          onChange={e => handleChange("category", e)}
-          labelWidth={labelWidth}
-          inputProps={{
-            name: "category",
-            id: "outlined-category-native-simple"
-          }}
-        >
-          <option value="" />
-          <option value={"Family"}>Family</option>
-          <option value={"Work"}>Work</option>
-          <option value={"Friends"}>Friends</option>
-        </Select>
-      </FormControl>
-
-      <FormControl variant="outlined" className={classes.formControl}>
-        
-      
-
-        <div>
-      <h1>Seleccionar etiqueta</h1>
-      
-      <MultiSelect
-         id = "Etiqueta"
-        options={etiquetas}
-        value={selected}
-        onChange={setSelected}
-        labelledBy={"Select"}
-      />
-    </div>
-
-
-
-
-        
-
-    
-
-        <div class="row">
-  <div class="col-md-12">
-
-    
-
-  </div>
-</div>
-        
-      </FormControl>
-
-      <TextField
-        id="outlined-textarea"
-        label="Escribir una nota"
-        placeholder="Escribir una nota"
+        label="Escribe tu mensaje"
+        placeholder="Apunte..."
         multiline
         className={classes.textField}
         margin="normal"
@@ -216,6 +140,45 @@ function CreateNote() {
         rows={10}
         fullWidth
       />
+
+
+
+
+      <TextField
+        id="outlined-textarea"
+        label="Etiquetas"
+        placeholder="Etiqueta1, Etiqueta2, Etiqueta3 ..."
+        className={classes.textField}
+        margin="normal"
+        variant="outlined"
+        fullWidth
+        onChange={e => handleChange("title", e)}
+      />
+
+      
+
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel ref={inputLabel} htmlFor="outlined-notebook-native-simple">
+          Lista de Cursos
+        </InputLabel>
+        <Select
+          native
+          value={state.notebook}
+          onChange={e => handleChange("notebook", e)}
+          labelWidth={labelWidth}
+          inputProps={{
+            name: "notebook",
+            id: "outlined-notebook-native-simple"
+          }}
+        >
+          <option value="" />
+          <option value={"Lenguajes Prog."}>Lenguajes Prog.</option>
+          <option value={"Experiencia Usuario"}>Experiencia Usuario</option>
+          <option value={"Diseno S.Logicos"}>Diseno S.Logicos</option>
+        </Select>
+      </FormControl>
+
+      
       <Button
         variant="outlined"
         color="primary"

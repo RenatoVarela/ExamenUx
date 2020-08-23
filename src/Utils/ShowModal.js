@@ -13,9 +13,11 @@ export default function ShowModal() {
   const [state, setState] = React.useState({
     category: "",
     message: "",
-    title: "",
-    Etiquetas: ""
+    title: ""
   });
+
+  var today = new Date(),
+  date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
   const handleClose = () => {
     dispatch({ type: "showMessage", showModal: false });
@@ -30,7 +32,7 @@ export default function ShowModal() {
 
   React.useEffect(() => {
     return () => {
-      setState({ category: "", message: "", title: "", Etiquetas: "" });
+      setState({ category: "", message: "", title: "" });
     };
   }, [show]);
 
@@ -46,11 +48,10 @@ export default function ShowModal() {
           <DialogTitle id="form-dialog-title">{state.title}</DialogTitle>
           <DialogContent>
             <Typography color={"primary"} variant="caption">
-              category : {state.category}
+              Fecha : {date}
             </Typography>
             <Divider />
             <ReactMarkdown source={state.message} escapeHtml={false} />
-            <ReactMarkdown source={state.Etiquetas} escapeHtml={false} />
           </DialogContent>
         </Dialog>
       )}

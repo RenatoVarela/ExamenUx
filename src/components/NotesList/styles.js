@@ -1,12 +1,15 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { blue } from "@material-ui/core/colors";
 
 export const useNoteStyles = makeStyles(theme => ({
   paper: {
+    backgroundColor: "#F7F2E0",
     padding: theme.spacing(2) * 2,
     color: theme.palette.text.secondary,
     marginBottom: 10
   },
   button: {
+ 
     position: "relative",
     top: "10px"
   },

@@ -19,37 +19,34 @@ function NoteBooks() {
    * show a list of notes of a notebook and dispatch it into Context
    **/
   function showNotesOf(Notebook) {
-    let NoteNextMonth = LocalStorage.getNotebooks("Next Month");
-    let University = LocalStorage.getNotebooks("University");
-    let Home = LocalStorage.getNotebooks("Home");
+    let Lenguajes = LocalStorage.getNotebooks("Lenguajes Prog.");
+    let Experiencia = LocalStorage.getNotebooks("Experiencia Usuario");
+    let Diseno = LocalStorage.getNotebooks("Diseno S.Logicos");
     let Notes = LocalStorage.getNotebooks("notes");
-    
     setActiveNote(Notebook);
     if (Notebook === "all") {
       let All;
-      NoteNextMonth = NoteNextMonth !== null ? JSON.parse(NoteNextMonth) : [];
-      University = University !== null ? JSON.parse(University) : [];
-      Home = Home !== null ? JSON.parse(Home) : [];
+      Lenguajes = Lenguajes !== null ? JSON.parse(Lenguajes) : [];
+      Experiencia = Experiencia !== null ? JSON.parse(Experiencia) : [];
+      Diseno = Diseno !== null ? JSON.parse(Diseno) : [];
       Notes = Notes !== null ? JSON.parse(Notes) : [];
-      All = [...NoteNextMonth, ...University, ...Home, ...Notes];
+      All = [...Lenguajes, ...Experiencia, ...Diseno, ...Notes];
       if (All.length > 0) {
         dispatch({ type: "newNote", notes: All });
       }
     } else {
       let Notes;
-     
-      if (Notebook === "Next Month") {
-        Notes = NoteNextMonth;
+      if (Notebook === "Lenguajes Prog.") {
+        Notes = Lenguajes;
       }
-      if (Notebook === "University") {
-        Notes = University;
+      if (Notebook === "Experiencia Usuario") {
+        Notes = Experiencia;
       }
-      if (Notebook === "Home") {
-        Notes = Home;
+      if (Notebook === "Diseno S.Logicos") {
+        Notes = Diseno;
       }
 
       Notes = Notes !== null ? JSON.parse(Notes) : [];
-  
       dispatch({ type: "newNote", notes: Notes });
     }
   }
@@ -87,46 +84,46 @@ function NoteBooks() {
             <ListItem
               className={[
                 classes.noteBookList,
-                activeNote === "Next Month" && classes.active
+                activeNote === "Lenguajes Prog." && classes.active
               ].join(" ")}
-              onClick={() => showNotesOf("Next Month")}
+              onClick={() => showNotesOf("Lenguajes Prog.")}
             >
               <ListItemAvatar>
                 <Avatar>
                   <FolderIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="Next Month" />
+              <ListItemText primary="Lenguajes Prog." />
             </ListItem>
 
             <ListItem
               className={[
                 classes.noteBookList,
-                activeNote === "University" && classes.active
+                activeNote === "Experiencia Usuario" && classes.active
               ].join(" ")}
-              onClick={() => showNotesOf("University")}
+              onClick={() => showNotesOf("Experiencia Usuario")}
             >
               <ListItemAvatar>
                 <Avatar>
                   <FolderIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="University" />
+              <ListItemText primary="Experiencia Usuario" />
             </ListItem>
 
             <ListItem
               className={[
                 classes.noteBookList,
-                activeNote === "Home" && classes.active
+                activeNote === "Diseno S.Logicos" && classes.active
               ].join(" ")}
-              onClick={() => showNotesOf("Home")}
+              onClick={() => showNotesOf("Diseno S.Logicos")}
             >
               <ListItemAvatar>
                 <Avatar>
                   <FolderIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="Home" />
+              <ListItemText primary="Diseno S.Logicos" />
             </ListItem>
           </List>
         </div>

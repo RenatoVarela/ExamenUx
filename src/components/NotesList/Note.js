@@ -7,19 +7,16 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import { useNoteStyles as useStyles } from "./styles";
-import Checkbox from "@material-ui/core/Checkbox";
+//import Checkbox from "@material-ui/core/Checkbox";
 
 function Note(props) {
   const { item, row } = props;
-  const { id, title, category, etiquetas} = item;
-  const [checkbox, setCheckbox] = React.useState(false);
+  const { id, title, category } = item;
+ // const [checkbox, setCheckbox] = React.useState(false);
   const classes = useStyles();
   const [, dispatch] = useStateValue();
 
-  function handleChangeCheckBox() {
-    setCheckbox(!checkbox);
-    props.setCheckbox(!checkbox, id);
-  }
+
 
   function deleteNote() {
     const NoteBookOfTheNote = item.notebook;
@@ -44,9 +41,7 @@ function Note(props) {
     dispatch({ type: "newNote", notes: removeNote });
   }
 
-  function updateNote() {
-    dispatch({ type: "openModal", modal: true, edit: id });
-  }
+ 
 
   function showNote() {
     dispatch({ type: "showMessage", showModal: true, show: id });
@@ -56,15 +51,8 @@ function Note(props) {
     <Paper className={classes.paper}>
       <Grid container>
         <div className={title}>
-          <Checkbox
-            checked={checkbox}
-            onChange={handleChangeCheckBox}
-            value="checkedA"
-            inputProps={{
-              "aria-label": "primary checkbox"
-            }}
-          />
-          {row + 1}- {title} ({category})({etiquetas})
+        
+          {row + 1}- {title}
         </div>
       </Grid>
       <Divider variant="middle" />
@@ -77,9 +65,7 @@ function Note(props) {
           <Button variant="outlined" color="secondary" onClick={deleteNote}>
             Delete
           </Button>
-          <Button variant="outlined" color="primary" onClick={updateNote}>
-            Update
-          </Button>
+         
           <Button variant="outlined" color="primary" onClick={showNote}>
             Show
           </Button>

@@ -83,18 +83,16 @@ LocalStorage.rowExistsIn = (notebook, object) => {
   }
 };
 LocalStorage.getAllNotes = () => {
-  let NoteNextMonth = LocalStorage.getNotebooks("Next Month");
-  let University = LocalStorage.getNotebooks("University");
-  let Home = LocalStorage.getNotebooks("Home");
+  let Lenguajes = LocalStorage.getNotebooks("Lenguajes Prog.");
+  let Experiencia = LocalStorage.getNotebooks("Experiencia Usuario");
+  let Diseno = LocalStorage.getNotebooks("Diseno S.Logicos");
   let Notes = LocalStorage.getNotebooks("notes");
-  let Etiquetas = LocalStorage.getNotebooks("Etiquetas");
   let All;
-  NoteNextMonth = NoteNextMonth !== null ? JSON.parse(NoteNextMonth) : [];
-  University = University !== null ? JSON.parse(University) : [];
-  Home = Home !== null ? JSON.parse(Home) : [];
+  Lenguajes = Lenguajes !== null ? JSON.parse(Lenguajes) : [];
+  Experiencia = Experiencia !== null ? JSON.parse(Experiencia) : [];
+  Diseno = Diseno !== null ? JSON.parse(Diseno) : [];
   Notes = Notes !== null ? JSON.parse(Notes) : [];
-  Etiquetas = Etiquetas !== null ? JSON.parse(Etiquetas) : [];
-  All = [...NoteNextMonth, ...University, ...Home, ...Notes, ...Etiquetas ];
+  All = [...Lenguajes, ...Experiencia, ...Diseno, ...Notes];
 
   return All;
 };
@@ -126,13 +124,10 @@ LocalStorage.updateId = (id, itemObject) => {
   if (List !== null && List.length > 0) {
     const updatedList = List.filter(item => {
       if (id === item.id) {
-        const { title, message, category, Etiquetas } = itemObject;
-      
+        const { title, message, category } = itemObject;
         item.title = title;
         item.message = message;
         item.category = category;
-        item.Etiquetas = Etiquetas;
-       
       }
       return item;
     });

@@ -6,8 +6,8 @@ import LocalStorage from "../../Utils/localStorage";
 import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
+//import Button from "@material-ui/core/Button";
+//import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { useListStyles as useStyles } from "./styles";
 //import InputLabel from "@material-ui/core/InputLabel";
 //import FormControl from "@material-ui/core/FormControl";
@@ -18,9 +18,9 @@ function NotesList() {
   const [{ notes }, dispatch] = useStateValue();
   const [mainData, setMainData] = useState([]);
   const [state, setState] = useState("");
- 
+  const [notebookDropDown, setNotebookDropDown] = useState("");
   const [stateCategory, setStateCategory] = useState("");
-  const [checkboxes, setCheckboxes] = useState([]);
+  //const [checkboxes, setCheckboxes] = useState([]);
 
   /**
    * Find the object with complexicity O(n2)
@@ -33,7 +33,7 @@ function NotesList() {
   }
 
   /**
-   * Handle Search in titles
+   * Para buscar por etiquetas
    **/
   function search(event) {
     const value = event.target.value;
@@ -48,29 +48,12 @@ function NotesList() {
     }
   }
 
-  /**
-   * Handle Search in categories
-   **/
-  function searchCategory(param) {
-    const target = param.target;
-    const value = target !== undefined ? target.value : param;
-    setState("");
-    setStateCategory(value);
-    const searched = searchFor(value, "category", notes);
-    if (searched.length > 0) {
-      setMainData(searched);
-    }
-    if (searched.length === 0) {
-      setMainData([]);
-    }
-  }
+
 
   /**
    * handle check boxes to move into note books
    **/
-
-   
-  function handleCheckbox(state, id) {
+  /*function handleCheckbox(state, id) {
     if (state) {
       setCheckboxes([...checkboxes, id]);
     } else {
@@ -82,9 +65,13 @@ function NotesList() {
         setCheckboxes(checkboxes);
       }
     }
-  }
+  }*/
 
- 
+  /**
+   * Handle Move notes to another notebook
+   **/
+  
+
   React.useEffect(() => {
     setMainData(notes);
   }, [notes]);
@@ -104,8 +91,8 @@ function NotesList() {
       <TextField
         value={state}
         id="outlined-textarea"
-        label="search"
-        placeholder="search title of note"
+        label="Buscar por Etiqueta"
+        placeholder="Etiqueta1, Etiqueta2 ..."
         className={classes.textField}
         margin="normal"
         variant="outlined"
@@ -120,64 +107,15 @@ function NotesList() {
         }}
       />
 
-      <TextField
-        value={stateCategory}
-        id="outlined-textarea"
-        label="search category"
-        placeholder="search for category"
-        className={[classes.textField, classes.margin].join(" ")}
-        margin="normal"
-        variant="outlined"
-        fullWidth
-        onChange={searchCategory}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <SearchIcon />
-            </InputAdornment>
-          )
-        }}
-      />
-
      
 
-      <ButtonGroup
-        fullWidth
-        variant="text"
-        color="secondary"
-        size="large"
-        aria-label="large contained secondary button group"
-      >
-        <Button
-          color={stateCategory === "" ? "secondary" : "primary"}
-          onClick={() => searchCategory("")}
-        >
-          All
-        </Button>
-        <Button
-          color={stateCategory === "Family" ? "secondary" : "primary"}
-          onClick={() => searchCategory("Family")}
-        >
-          Family
-        </Button>
-        <Button
-          color={stateCategory === "Work" ? "secondary" : "primary"}
-          onClick={() => searchCategory("Work")}
-        >
-          Work
-        </Button>
-        <Button
-          color={stateCategory === "Friends" ? "secondary" : "primary"}
-          onClick={() => searchCategory("Friends")}
-        >
-          Friends
-        </Button>
-      </ButtonGroup>
+    
+
       <div className={classes.margin}>
         {mainData.length > 0 &&
           mainData.map((item, index) => (
             <Note
-              setCheckbox={handleCheckbox}
+              //setCheckbox={handleCheckbox}
               row={index}
               item={item}
               key={item.id}
