@@ -8,11 +8,22 @@ import { StateProvider, initialState, reducer } from "../../statemanagement";
 import ModalBase from "../../Utils/Modal";
 import ShowModal from "../../Utils/ShowModal";
 import { useStyles } from "./styles";
+import {
+  createMuiTheme,
+  responsiveFontSizes,
+  MuiThemeProvider,
+} from "@material-ui/core";
+
+let theme = createMuiTheme();
+theme = responsiveFontSizes(theme);
+
 
 function MainComponent() {
   const classes = useStyles();
 
   return (
+    <div className="App">
+    <MuiThemeProvider theme={theme}>
     <React.Fragment>
       <Paper className={classes.root}>
         <Grid container spacing={3}>
@@ -34,6 +45,8 @@ function MainComponent() {
         </Grid>
       </Paper>
     </React.Fragment>
+    </MuiThemeProvider>
+    </div>
   );
 }
 

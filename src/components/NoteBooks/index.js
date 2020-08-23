@@ -10,6 +10,7 @@ import Avatar from "@material-ui/core/Avatar";
 import FolderIcon from "@material-ui/icons/Folder";
 import LocalStorage from "../../Utils/localStorage";
 
+
 function NoteBooks() {
   const classes = useStyles();
   const [activeNote, setActiveNote] = useState("all");
@@ -52,6 +53,7 @@ function NoteBooks() {
   }
 
   return (
+    
     <React.Fragment>
       <Typography
         variant="h5"
@@ -108,7 +110,7 @@ function NoteBooks() {
                   <FolderIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="Experiencia Usuario" />
+              <ListItemText primary="Experiencia Usuario"  />
             </ListItem>
 
             <ListItem
@@ -129,6 +131,7 @@ function NoteBooks() {
         </div>
       </div>
     </React.Fragment>
+    
   );
 }
 
