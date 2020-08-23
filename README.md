@@ -7,3 +7,5 @@ Buenas Ingeniero , con los commits paso un asunto y es que me salia este error c
 
 como solucion me salia que le diera -git push -f origin master y me dejo subirla pero me borro los 11 commits que tenia desde ayer y no supe como recuperarlos
 asi que todos los commits que van a salir salen que los hice en la mañana, perdiendo todo los commits que hice ayer
+
+Realmente no se como demostrarle que ya tenia los 11 commits pero en se puede ver que el github page esta creado desde ayer cuando ya publicado la aplicacion
