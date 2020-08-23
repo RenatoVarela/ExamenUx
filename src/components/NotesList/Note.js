@@ -9,6 +9,8 @@ import Grid from "@material-ui/core/Grid";
 import { useNoteStyles as useStyles } from "./styles";
 //import Checkbox from "@material-ui/core/Checkbox";
 
+
+
 function Note(props) {
   const { item, row } = props;
   const { id, title, category } = item;
@@ -51,7 +53,6 @@ function Note(props) {
     <Paper className={classes.paper}>
       <Grid container>
         <div className={title}>
-        
           {row + 1}- {title}
         </div>
       </Grid>
@@ -63,11 +64,11 @@ function Note(props) {
           className={classes.button}
         >
           <Button variant="outlined" color="secondary" onClick={deleteNote}>
-            Delete
+            Eliminar
           </Button>
          
           <Button variant="outlined" color="primary" onClick={showNote}>
-            Show
+            Mostrar
           </Button>
         </ButtonGroup>
       </Grid>

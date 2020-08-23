@@ -60,10 +60,10 @@ function NoteBooks() {
         gutterBottom
         noWrap
       >
-        Note Books
+        Clases
       </Typography>
 
-      <div className={classes.noteBooksContainer}>
+      <div className={classes.noteBooksContainer} >
         <div className={classes.demo}>
           <List dense={false}>
             <ListItem

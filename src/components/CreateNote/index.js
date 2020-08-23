@@ -126,7 +126,7 @@ function CreateNote() {
         gutterBottom
         noWrap
       >
-        Add a new Note
+        Añadir Una nota
       </Typography>
       <TextField
         id="outlined-textarea"
@@ -185,7 +185,7 @@ function CreateNote() {
         className={classes.button}
         onClick={addToNotes}
       >
-        Add Note
+        Guardar Nota
       </Button>
       <CustomSnackbar
         open={openSnackbar}
