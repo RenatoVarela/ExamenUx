@@ -68,7 +68,7 @@ function Note(props) {
           </Button>
          
           <Button variant="outlined" color="primary" onClick={showNote}>
-            Mostrar
+            Leer Nota
           </Button>
         </ButtonGroup>
       </Grid>

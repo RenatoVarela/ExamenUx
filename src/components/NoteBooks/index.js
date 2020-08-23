@@ -78,7 +78,7 @@ function NoteBooks() {
                   <FolderIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="All" />
+              <ListItemText primary="Ver Todo" />
             </ListItem>
 
             <ListItem
