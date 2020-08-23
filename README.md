@@ -3,6 +3,10 @@ ejecutar los comandos en el siguiente orden
 --- npm install
 --- npm run start
 
+
+
+--acerca de los commits
+
 Buenas Ingeniero , con los commits paso un asunto y es que me salia este error cuando queria hacer push y no me dejaba hacer push
 
 ![WhatsApp Image 2020-08-23 at 13 47 37](https://user-images.githubusercontent.com/46858678/90987360-ab717680-e547-11ea-9335-346ca5225397.jpeg)
