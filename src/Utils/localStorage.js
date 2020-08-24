@@ -9,44 +9,33 @@ LocalStorage.set = (key, value) => {
 LocalStorage.remove = key => {
   return localStorage.removeItem(key);
 };
-/**
- * get all notes
- **/
+
+
 LocalStorage.getNotes = () => {
   return LocalStorage.get("notes");
 };
 
-/**
- * get all notes of notebooks
- **/
+
 LocalStorage.getNotebooks = notebook => {
   return LocalStorage.get(notebook);
 };
 
-/**
- * set a group of Notes
- **/
+
 LocalStorage.setNotes = value => {
   LocalStorage.set("notes", value);
 };
 
-/**
- * remove Notes
- **/
+
 LocalStorage.rmNotes = () => {
   LocalStorage.remove("notes");
 };
 
-/**
- * remove Notes
- **/
+
 LocalStorage.rmNoteBook = notebok => {
   LocalStorage.remove(notebok);
 };
 
-/**
- * get a note by index
- **/
+
 LocalStorage.note = id => {
   if (LocalStorage.getNotes() !== null) {
     const List = JSON.parse(LocalStorage.getNotes());
@@ -55,9 +44,7 @@ LocalStorage.note = id => {
   return [];
 };
 
-/**
- * check that note exists by id
- **/
+
 LocalStorage.rowExists = object => {
   const List = JSON.parse(LocalStorage.getNotes());
   if (List !== null && List.length > 0) {
@@ -69,9 +56,7 @@ LocalStorage.rowExists = object => {
   }
 };
 
-/**
- * check that note exists by id in specific notebook
- **/
+
 LocalStorage.rowExistsIn = (notebook, object) => {
   const List = JSON.parse(localStorage.getItem(notebook));
   if (List !== null && List.length > 0) {
@@ -96,9 +81,7 @@ LocalStorage.getAllNotes = () => {
 
   return All;
 };
-/**
- * get node by id
- **/
+
 LocalStorage.findId = id => {
   const List = LocalStorage.getAllNotes();
   if (List !== null && List.length > 0) {
@@ -110,9 +93,7 @@ LocalStorage.findId = id => {
   }
 };
 
-/**
- * update a note by id
- **/
+
 LocalStorage.updateId = (id, itemObject) => {
   const List = JSON.parse(
     LocalStorage.getNotebooks(
