@@ -39,9 +39,7 @@ function CreateNote() {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
-  /**
-   * handle change inputs
-   **/
+
   function handleChange(name, event) {
     setState({
       ...state,
@@ -50,11 +48,9 @@ function CreateNote() {
     });
   }
 
-  /**
-   * Add notes inside of localStorage and context api
-   **/
+
   function addToNotes() {
-    //note book is not set, so set the Note in "Note" object
+    
     if (state.notebook === "") {
       const allNodes = LocalStorage.getNotes();
       let allNodesObject = allNodes !== null ? JSON.parse(allNodes) : [];
@@ -97,9 +93,7 @@ function CreateNote() {
     }
   }
 
-  /**
-   * On component Did mount , send data from localStorage into context api
-   **/
+ 
   React.useEffect(() => {
     let All;
     let Lenguajes = LocalStorage.getNotebooks("Lenguajes Prog.");
