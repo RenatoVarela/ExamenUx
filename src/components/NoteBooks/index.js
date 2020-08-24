@@ -16,9 +16,7 @@ function NoteBooks() {
   const [activeNote, setActiveNote] = useState("all");
   const [, dispatch] = useStateValue();
 
-  /**
-   * show a list of notes of a notebook and dispatch it into Context
-   **/
+ 
   function showNotesOf(Notebook) {
     let Lenguajes = LocalStorage.getNotebooks("Lenguajes Prog.");
     let Experiencia = LocalStorage.getNotebooks("Experiencia Usuario");
